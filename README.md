@@ -14,7 +14,9 @@ Run a WordPress development environment with Docker Compose.
 The `wordpress` container exposes Apache on host port `8080`:
 
 [http://localhost:8080](http://localhost:8080)
+
 [http://localhost:8080/wp-admin](http://localhost:8080/wp-admin)
+
 [http://localhost:8080/wp-json](http://localhost:8080/wp-json)
 
 The default credentials for the WordPress admin user are `wordpress`/`wordpress`.
