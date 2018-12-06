@@ -4,8 +4,8 @@ Run a WordPress development environment with Docker Compose.
 
 ## Install
 
-       docker-compose up -d
-       docker-compose run --rm wp-cli install-wordpress
+     docker-compose up -d
+     docker-compose run --rm wp-cli install-wordpress
 
 ## Services
 
