@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  mysql:
+    image: mariadb
+    ports:
+      - "8306:3306"
+    volumes:
+      - "./mysql:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: "wordpress"
+      MYSQL_DATABASE: "wordpress"
+      MYSQL_USER: "wordpress"
+      MYSQL_PASSWORD: "wordpress"
+
+  wordpress:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - "./wordpress:/var/www/html"
+    environment:
+      WORDPRESS_DB_HOST: "mysql:3306"
+      WORDPRESS_DB_USER: "wordpress"
+      WORDPRESS_DB_PASSWORD: "wordpress"
+      WORDPRESS_DEBUG: 1
+
+  wp-cli:
+    image: wordpress:cli
+    depends_on:
+      - wordpress
+    volumes:
+      - "./wordpress:/var/www/html"
+      - "./bin/install-wordpress.sh:/usr/local/bin/install-wordpress"
+    command: "--info"
