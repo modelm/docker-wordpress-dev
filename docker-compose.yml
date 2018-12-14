@@ -2,7 +2,7 @@ version: "3"
 
 services:
   mysql:
-    image: mariadb
+    image: "mariadb"
     ports:
       - "8306:3306"
     volumes:
@@ -14,9 +14,7 @@ services:
       MYSQL_PASSWORD: "wordpress"
 
   wordpress:
-    build:
-        context: .
-        dockerfile: Dockerfile
+    build: "."
     ports:
       - "8080:80"
     volumes:
@@ -28,9 +26,9 @@ services:
       WORDPRESS_DEBUG: 1
 
   wp-cli:
-    image: wordpress:cli
+    image: "wordpress:cli"
     depends_on:
-      - wordpress
+      - "wordpress"
     volumes:
       - "./wordpress:/var/www/html"
       - "./bin/install-wordpress.sh:/usr/local/bin/install-wordpress"
